@@ -1,4 +1,4 @@
-# slack-updates
+I'm# slack-updates
 
 ## Overview
 
@@ -44,3 +44,5 @@ alias slacks="echo 'brb, lunch, gym, ski, locked, errands, weekend, evening, mee
 - A `clear` functionality to clear your status
 - Automation to run the app at certain times of the day
 - Automation to run the app when certain actions take place
+- Update presence 
+- Include ability to pause notifications
