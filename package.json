@@ -1,0 +1,9 @@
+{
+  "name": "slack-updates",
+  "version": "1.0.0",
+  "description": "A lightweight app to update slack statuses from the command line",
+  "main": "index.js",
+  "repository": "https://github.com/McCambley/slack-updates.git",
+  "author": "McCambley <jakemccamb16@gmail.com>",
+  "license": "MIT"
+}
