@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-require("dotenv").config(); // Load variables from .env
 const { WebClient } = require("@slack/web-api");
+const path = require("path");
+const dotenv = require("dotenv");
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 // Capture command-line arguments:
 //   process.argv[0] => 'node'
@@ -43,8 +45,8 @@ const web = new WebClient(token);
     });
 
     console.log("Status updated successfully:");
-    console.log(`  Text:  ${result.profile.status_text}`);
-    console.log(`  Emoji: ${result.profile.status_emoji}`);
+    console.log(`  Text:  ${result.profile?.status_text}`);
+    console.log(`  Emoji: ${result.profile?.status_emoji}`);
     console.log(`  Expiration time: ${result.profile?.status_expiration}`);
   } catch (error) {
     console.error("Error updating Slack status:", error.message);
