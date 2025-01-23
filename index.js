@@ -43,11 +43,17 @@ const web = new WebClient(token);
         status_expiration: statusExpirationAdjusted,
       },
     });
+    const snooze = await web.dnd.setSnooze({
+      num_minutes: expirationTime * 1000 * 60,
+      token,
+    });
 
     console.log("Status updated successfully:");
     console.log(`  Text:  ${result.profile?.status_text}`);
     console.log(`  Emoji: ${result.profile?.status_emoji}`);
     console.log(`  Expiration time: ${result.profile?.status_expiration}`);
+    console.log(`  Snooze enabled: ${snooze?.snooze_enabled}`);
+    console.log(`  Snooze endtime: ${snooze?.snooze_endtime}`);
   } catch (error) {
     console.error("Error updating Slack status:", error.message);
     // Log inputs
