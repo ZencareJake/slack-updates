@@ -28,8 +28,9 @@ alias errands="slack 'Errands - Back on this afternoon' ':car:' 1 0"
 alias evening="slack 'Have a great evening!' ':sparkles:' 8 0"
 alias weekend="slack 'Have a great weekend!' ':sparkles:' 48 0"
 alias meeting="slack 'In a meeting' ':calendar:' 1 1"
+alias clear="slack '' '' 0 0"                               # Clear the status
 # Alias to list all available statuses
-alias slacks="echo 'brb, lunch, gym, ski, locked, errands, weekend, evening, meeting'"
+alias slacks="echo 'brb, lunch, gym, ski, locked, errands, weekend, evening, meeting, clear'"
 ```
 
 ## Using the app
@@ -41,8 +42,8 @@ alias slacks="echo 'brb, lunch, gym, ski, locked, errands, weekend, evening, mee
 
 ## Future iterations
 
-- A `clear` functionality to clear your status
+- ✅ A `clear` functionality to clear your status - Completed January 23rd, 2025
+- ✅ Include ability to pause notifications - Completed January 23rd, 2025
 - Automation to run the app at certain times of the day
 - Automation to run the app when certain actions take place
 - Update presence
-- ✅ Include ability to pause notifications - Completed January 23rd, 2025
