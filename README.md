@@ -19,15 +19,15 @@ A lightweight node app to be used to update Slack statuses in a single workspace
 # Alias for to run the app
 alias slack="node ~/dev/slack-updates/index.js"
 # Aliases per status
-alias brb="slack 'Be right back!' ':brb:' 0"              # 0 defaults to a status that will not expire
-alias lunch="slack 'Lunch' ':away:' 1"                    # 1 is the number of hours the status will last
-alias gym="slack 'Gym - Back in an hour' ':away:' 2"      # 2 hours
-alias ski="slack 'Ski break - Back in an hour' ':ski:' 2" # etc.
-alias locked="slack 'Locked in' ':technologist:' 1"
-alias errands="slack 'Errands - Back on this afternoon' ':car:' 1"
-alias evening="slack 'Have a great evening!' ':sparkles:' 8"
-alias weekend="slack 'Have a great weekend!' ':sparkles:' 48"
-alias meeting="slack 'In a meeting' ':calendar:' 1"
+alias brb="slack 'Be right back!' ':brb:' 0 0"              # The first 0 defaults to a status that will not expire - The second 0 ensures do not disturb is not enabled
+alias lunch="slack 'Lunch' ':away:' 1 1"                    # The first 1 is the number of hours the status will last - The second 1 enables do not disturb
+alias gym="slack 'Gym - Back in an hour' ':away:' 2 1"      # 2 hours with do not disturb enabled
+alias ski="slack 'Ski break - Back in an hour' ':ski:' 2 1" # etc.
+alias locked="slack 'Locked in' ':technologist:' 1 1"
+alias errands="slack 'Errands - Back on this afternoon' ':car:' 1 0"
+alias evening="slack 'Have a great evening!' ':sparkles:' 8 0"
+alias weekend="slack 'Have a great weekend!' ':sparkles:' 48 0"
+alias meeting="slack 'In a meeting' ':calendar:' 1 1"
 # Alias to list all available statuses
 alias slacks="echo 'brb, lunch, gym, ski, locked, errands, weekend, evening, meeting'"
 ```
@@ -44,5 +44,5 @@ alias slacks="echo 'brb, lunch, gym, ski, locked, errands, weekend, evening, mee
 - A `clear` functionality to clear your status
 - Automation to run the app at certain times of the day
 - Automation to run the app when certain actions take place
-- Update presence 
-- Include ability to pause notifications
+- Update presence
+- ✅ Include ability to pause notifications - Completed January 23rd, 2025
