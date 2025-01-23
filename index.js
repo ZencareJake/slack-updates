@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// @ts-check
 
 const { WebClient } = require("@slack/web-api");
 const path = require("path");
@@ -10,13 +11,16 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 //   process.argv[1] => 'updateSlackStatus.js'
 //   process.argv[2] => statusText
 //   process.argv[3] => statusEmoji
-//   process.argv[4] => statusExpiration (in seconds, optional)
+//   process.argv[4] => statusExpiration (in hours) (0 will not expire)
+//   process.argv[5] => doNotDisturb (0 | 1)
+
 const [
   ,
   ,
   statusText = "Away",
   statusEmoji = ":away:",
   statusExpiration = "0", // Hours
+  doNotDisturb = "0",
 ] = process.argv;
 
 // Slack token should be stored securely, here we read from an environment variable
@@ -44,7 +48,7 @@ const web = new WebClient(token);
       },
     });
     const snooze = await web.dnd.setSnooze({
-      num_minutes: expirationTime * 1000 * 60,
+      num_minutes: parseInt(doNotDisturb) ? expirationTime * 60 : 0,
       token,
     });
 
@@ -52,6 +56,7 @@ const web = new WebClient(token);
     console.log(`  Text:  ${result.profile?.status_text}`);
     console.log(`  Emoji: ${result.profile?.status_emoji}`);
     console.log(`  Expiration time: ${result.profile?.status_expiration}`);
+    console.log(`  Snooze duration: ${expirationTime * 60}`);
     console.log(`  Snooze enabled: ${snooze?.snooze_enabled}`);
     console.log(`  Snooze endtime: ${snooze?.snooze_endtime}`);
   } catch (error) {
